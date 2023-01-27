@@ -1,6 +1,7 @@
 use crate::{
     calories::CalorieList,
     crates::{Crane, Crates},
+    filesystem::Filesystem,
     rps::Strategy,
     rucksack::RucksackInventory,
     sections::Sections,
@@ -9,6 +10,7 @@ use crate::{
 
 pub mod calories;
 pub mod crates;
+pub mod filesystem;
 pub mod rps;
 pub mod rucksack;
 pub mod sections;
@@ -39,5 +41,9 @@ fn main() -> Result<(), anyhow::Error> {
     let signal = Signal::load("./inputs/signal.txt")?;
     dbg!(signal.markers(4).next().unwrap());
     dbg!(signal.markers(14).next().unwrap());
+    // Day 7
+    let filesystem = Filesystem::load("./inputs/filesystem.txt")?;
+    dbg!(filesystem.dirs_up_to(100000).sum::<usize>());
+
     Ok(())
 }
