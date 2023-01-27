@@ -4,6 +4,7 @@ use crate::{
     rps::Strategy,
     rucksack::RucksackInventory,
     sections::Sections,
+    signal::Signal,
 };
 
 pub mod calories;
@@ -11,6 +12,7 @@ pub mod crates;
 pub mod rps;
 pub mod rucksack;
 pub mod sections;
+pub mod signal;
 
 fn main() -> Result<(), anyhow::Error> {
     // Day 1
@@ -29,9 +31,13 @@ fn main() -> Result<(), anyhow::Error> {
     let sections = Sections::load("./inputs/sections.txt")?;
     dbg!(sections.fully_contained().count());
     dbg!(sections.overlapped().count());
-    //Day 5
+    // Day 5
     let crates = Crates::load("./inputs/crates.txt")?;
     dbg!(crates.execute_moves(Crane::CrateMover9000).topmost());
     dbg!(crates.execute_moves(Crane::CrateMover9001).topmost());
+    // Day 6
+    let signal = Signal::load("./inputs/signal.txt")?;
+    dbg!(signal.markers(4).next().unwrap());
+    dbg!(signal.markers(14).next().unwrap());
     Ok(())
 }
