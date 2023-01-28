@@ -1,20 +1,20 @@
 use crate::{
     calories::CalorieList,
-    warehouse::{Crane, Crates},
     filesystem::Filesystem,
     rps::Strategy,
     rucksack::RucksackInventory,
     sections::Sections,
     signal::Signal,
+    warehouse::{Crane, Crates},
 };
 
 pub mod calories;
-pub mod warehouse;
 pub mod filesystem;
 pub mod rps;
 pub mod rucksack;
 pub mod sections;
 pub mod signal;
+pub mod warehouse;
 
 fn main() -> Result<(), anyhow::Error> {
     // Day 1
