@@ -1,6 +1,6 @@
 use crate::{
     calories::CalorieList,
-    crates::{Crane, Crates},
+    warehouse::{Crane, Crates},
     filesystem::Filesystem,
     rps::Strategy,
     rucksack::RucksackInventory,
@@ -9,7 +9,7 @@ use crate::{
 };
 
 pub mod calories;
-pub mod crates;
+pub mod warehouse;
 pub mod filesystem;
 pub mod rps;
 pub mod rucksack;
