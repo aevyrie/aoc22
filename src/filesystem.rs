@@ -79,7 +79,7 @@ impl Filesystem {
         let mut arena = vec![root];
         let mut pointer = 0;
 
-        let mut lines = data.lines().peekable().into_iter();
+        let mut lines = data.lines().peekable();
         while let Some(line) = lines.next() {
             let mut words = line.split_whitespace();
             match words.next().unwrap() {
@@ -129,7 +129,7 @@ impl Filesystem {
     }
 
     pub fn size(arena: &mut [Node], pointer: usize) -> usize {
-        let children: Vec<_> = arena[pointer].data.children().iter().copied().collect();
+        let children = arena[pointer].data.children().to_vec();
 
         children
             .iter()

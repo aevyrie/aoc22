@@ -96,7 +96,7 @@ impl Strategy {
 
             let opponent = moves
                 .next()
-                .ok_or(anyhow!("No opponent move"))
+                .ok_or_else(|| anyhow!("No opponent move"))
                 .and_then(|input| match input {
                     "A" => Ok(Move::Rock),
                     "B" => Ok(Move::Paper),
@@ -106,7 +106,7 @@ impl Strategy {
 
             let me = moves
                 .next()
-                .ok_or(anyhow!("No self move"))
+                .ok_or_else(|| anyhow!("No self move"))
                 .and_then(|input| match input {
                     "X" => Ok(opponent.move_needed_for(Outcome::Loss)),
                     "Y" => Ok(opponent.move_needed_for(Outcome::Tie)),
@@ -127,7 +127,7 @@ impl Strategy {
 
             let opponent = moves
                 .next()
-                .ok_or(anyhow!("No opponent move"))
+                .ok_or_else(||anyhow!("No opponent move"))
                 .and_then(|input| match input {
                     "A" => Ok(Move::Rock),
                     "B" => Ok(Move::Paper),
@@ -137,7 +137,7 @@ impl Strategy {
 
             let me = moves
                 .next()
-                .ok_or(anyhow!("No self move"))
+                .ok_or_else(||anyhow!("No self move"))
                 .and_then(|input| match input {
                     "X" => Ok(Move::Rock),
                     "Y" => Ok(Move::Paper),
