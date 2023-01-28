@@ -125,7 +125,7 @@ impl Filesystem {
     }
 
     pub fn calculate_size(&mut self) {
-        Self::size(&mut self.arena, 0);
+        self.arena[0].size = Self::size(&mut self.arena, 0);
     }
 
     pub fn size(arena: &mut [Node], pointer: usize) -> usize {
@@ -153,5 +153,19 @@ impl Filesystem {
                 None
             }
         })
+    }
+
+    pub fn dir_to_delete(&self, total_space: usize, space_needed: usize) -> &Node {
+        let used_space = self.arena[0].size;
+        let available_space = total_space - used_space;
+        let minimum_deletion = space_needed - available_space;
+
+        let mut smallest_matching = &self.arena[0];
+        for node in self.arena.iter() {
+            if node.size > minimum_deletion && node.size < smallest_matching.size {
+                smallest_matching = node;
+            }
+        }
+        smallest_matching
     }
 }

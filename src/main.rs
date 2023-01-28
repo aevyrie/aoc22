@@ -43,7 +43,8 @@ fn main() -> Result<(), anyhow::Error> {
     dbg!(signal.markers(14).next().unwrap());
     // Day 7
     let filesystem = Filesystem::load("./inputs/filesystem.txt")?;
-    dbg!(filesystem.dirs_up_to(100000).sum::<usize>());
+    dbg!(filesystem.dirs_up_to(100_000).sum::<usize>());
+    dbg!(filesystem.dir_to_delete(70_000_000, 30_000_000).size);
 
     Ok(())
 }
